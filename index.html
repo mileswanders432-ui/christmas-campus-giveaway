@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#9d2434">
+<title>圣诞校园生活小调查 · 幸运转盘</title>
+<style>
+:root{--red:#a72d3e;--deep:#70202e;--green:#1f5948;--cream:#fff9ef;--gold:#d6ad62;--ink:#392d2b}
+*{box-sizing:border-box}body{margin:0;color:var(--ink);font-family:ui-rounded,"PingFang SC","Microsoft YaHei",system-ui,sans-serif;background:radial-gradient(circle at 15% 10%,#fff 0 2px,transparent 3px),linear-gradient(145deg,#f8eee2,#fff9f1 45%,#e8f0e8);min-height:100vh;overflow-x:hidden}
+.snow{position:fixed;inset:0;pointer-events:none;z-index:5;overflow:hidden}.flake{position:absolute;top:-20px;color:#fff;font-size:12px;text-shadow:0 1px 4px #9aa;animation:fall linear infinite;opacity:.8}@keyframes fall{to{transform:translateY(110vh) rotate(360deg)}}
+header{display:flex;justify-content:space-between;align-items:center;padding:18px max(20px,calc((100vw - 980px)/2));color:var(--green);font-weight:800;letter-spacing:.08em}.brand{display:flex;gap:9px;align-items:center}.brand span{font-size:24px}
+main{width:min(92%,760px);margin:26px auto 60px}.panel{background:#fffdf8ed;border:1px solid #eadcc8;border-radius:28px;padding:clamp(22px,5vw,42px);box-shadow:0 18px 55px #573a2414;backdrop-filter:blur(8px);animation:rise .55s ease both}@keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.eyebrow{text-transform:uppercase;color:var(--red);font-size:12px;font-weight:800;letter-spacing:.18em}.hero{text-align:center}.hero h1{font-size:clamp(28px,6vw,42px);line-height:1.2;margin:12px 0;color:var(--deep)}.hero p{color:#776c62;line-height:1.8}.ornament{font-size:38px;margin:4px 0 12px}
+.progress{height:5px;background:#eee4d8;border-radius:9px;margin:0 0 25px;overflow:hidden}.progress i{display:block;height:100%;background:linear-gradient(90deg,var(--red),var(--gold));width:33%;transition:width .5s}
+h2{color:var(--deep);margin:0 0 8px;font-size:24px}.sub{color:#82776c;font-size:14px;line-height:1.7;margin:0 0 22px}
+.field{margin:17px 0}.field label{display:block;font-weight:700;font-size:14px;margin-bottom:8px}.field input,.field select,.field textarea{width:100%;padding:13px 14px;border:1px solid #e5d9ca;border-radius:13px;background:#fffefa;font:inherit;color:var(--ink);outline:none;transition:.2s}.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--red);box-shadow:0 0 0 3px #a72d3e18}
+.options{display:flex;flex-wrap:wrap;gap:9px}.options label{font-weight:500;border:1px solid #e7dacb;border-radius:999px;padding:9px 13px;background:#fff;cursor:pointer}.options input{accent-color:var(--red);width:auto;margin-right:5px}
+.btn{border:0;border-radius:999px;padding:14px 24px;background:linear-gradient(135deg,#b63c4b,#842332);color:white;font:inherit;font-weight:800;letter-spacing:.04em;cursor:pointer;box-shadow:0 8px 20px #922c3b30;transition:transform .2s,box-shadow .2s}.btn:hover{transform:translateY(-2px);box-shadow:0 12px 25px #922c3b38}.btn:disabled{opacity:.5;cursor:not-allowed;transform:none}.btn.secondary{background:#e9efe9;color:var(--green);box-shadow:none}.actions{display:flex;justify-content:center;margin-top:24px}
+.notice{font-size:12px;line-height:1.7;color:#897d71;background:#faf4eb;padding:12px 14px;border-radius:12px;margin-top:16px}
+.hidden{display:none!important}.wheel-wrap{width:min(82vw,390px);aspect-ratio:1;margin:22px auto 12px;position:relative;filter:drop-shadow(0 12px 14px #5c35252b)}
+.wheel{width:100%;height:100%;border-radius:50%;border:9px solid #f6e4bb;outline:5px solid var(--green);position:relative;overflow:hidden;background:conic-gradient(from -22.5deg,#a72d3e 0deg 45deg,#f2dcae 45deg 90deg,#245c49 90deg 135deg,#f7ead0 135deg 180deg,#a72d3e 180deg 225deg,#f2dcae 225deg 270deg,#245c49 270deg 315deg,#f7ead0 315deg 360deg);transition:transform 5.2s cubic-bezier(.12,.72,.08,1)}
+.wheel:after{content:"";position:absolute;inset:0;border-radius:50%;background:repeating-conic-gradient(from -22.5deg,transparent 0deg 44.4deg,#fff8 44.4deg 45deg);pointer-events:none}
+.slice-label{position:absolute;left:50%;top:50%;width:42%;text-align:center;transform-origin:0 0;font-size:clamp(10px,2.7vw,13px);font-weight:900;line-height:1.3;color:#fff; text-shadow:0 1px 2px #38251b;z-index:1}
+.slice-label.light{color:#6a342b;text-shadow:none}.pointer{position:absolute;z-index:3;left:50%;top:-13px;transform:translateX(-50%);width:0;height:0;border-left:17px solid transparent;border-right:17px solid transparent;border-top:38px solid #e2b653;filter:drop-shadow(0 3px 2px #4b3427)}
+.hub{position:absolute;z-index:4;left:50%;top:50%;transform:translate(-50%,-50%);width:82px;height:82px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff6d9,#d6ad62 65%,#9a6d2d);border:5px solid #fff0cf;display:grid;place-items:center;color:#6c2930;font-weight:1000;text-align:center;box-shadow:0 3px 10px #462b2b44}
+.wheel-caption{text-align:center;color:#776b60;font-size:13px}.result{font-size:24px;color:var(--red);font-weight:900;text-align:center;margin:15px 0}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}@media(max-width:520px){.grid2{grid-template-columns:1fr}header{padding:15px 20px}.panel{border-radius:22px}}
+.success{text-align:center}.success .gift{font-size:64px}.small{font-size:12px;color:#93877a}
+footer{text-align:center;color:#9a8d7e;font-size:11px;padding:0 20px 30px}
+</style></head>
+<body>
+<div class="snow" id="snow"></div>
+<header><div class="brand"><span>🎄</span> CAMPUS CHRISTMAS</div><div>✦ 2026 ✦</div></header>
+<main>
+<section class="panel" id="survey">
+<div class="hero"><div class="ornament">🎅🏻 ✨ 🎁</div><div class="eyebrow">A LITTLE CHRISTMAS SURVEY</div><h1>圣诞校园生活<br>小调查</h1><p>花一分钟分享你的校园日常，<br>完成后开启一份圣诞惊喜。</p></div>
+<div class="progress"><i id="progress"></i></div>
+<h2>关于你的校园生活</h2><p class="sub">以下为演示问卷，请填写虚构或非敏感信息即可。</p>
+<form id="surveyForm">
+<div class="grid2">
+<div class="field"><label>你目前的年级</label><select required><option value="">请选择</option><option>大一</option><option>大二</option><option>大三</option><option>大四</option><option>研究生及以上</option></select></div>
+<div class="field"><label>你的专业类别</label><select required><option value="">请选择</option><option>人文社科</option><option>理工科</option><option>经管类</option><option>艺术设计</option><option>医学及其他</option></select></div>
+</div>
+<div class="field"><label>课余时间最喜欢做什么？</label><div class="options"><label><input type="radio" name="hobby" required>听音乐</label><label><input type="radio" name="hobby">运动</label><label><input type="radio" name="hobby">看电影</label><label><input type="radio" name="hobby">宅寝休息</label><label><input type="radio" name="hobby">和朋友出门</label></div></div>
+<div class="field"><label>你最期待的圣诞活动是？</label><select required><option value="">请选择</option><option>交换礼物</option><option>圣诞聚餐</option><option>看灯饰、拍照</option><option>窝在宿舍追剧</option><option>暂时还没计划</option></select></div>
+<div class="field"><label>给今年的自己一句话（选填）</label><input maxlength="80" placeholder="例如：希望期末顺利，天天开心～"></div>
+<div class="notice">演示模式：本页问卷内容仅在当前页面使用，不会上传或保存。请勿填写真实身份证号、银行卡号等敏感信息。</div>
+<div class="actions"><button class="btn" type="submit">提交问卷 · 开启圣诞惊喜 →</button></div>
+</form></section>
+
+<section class="panel hidden" id="draw">
+<div class="hero"><div class="eyebrow">CHRISTMAS LUCKY SPIN</div><h1>圣诞幸运转盘</h1><p>圣诞老人准备了八份小惊喜，<br>你的专属礼物正在路上 ✨</p></div>
+<div class="wheel-wrap"><div class="pointer"></div><div class="wheel" id="wheel">
+<div class="slice-label" style="transform:rotate(0deg) translateY(-132px) rotate(0deg)">🎁<br>神秘圣诞礼物</div>
+<div class="slice-label light" style="transform:rotate(45deg) translateY(-132px) rotate(-45deg)">📱<br>iPhone 18 Pro Max</div>
+<div class="slice-label" style="transform:rotate(90deg) translateY(-132px) rotate(-90deg)">🎵<br>网易云音乐会员</div>
+<div class="slice-label light" style="transform:rotate(135deg) translateY(-132px) rotate(-135deg)">🔔<br>圣诞挂件</div>
+<div class="slice-label" style="transform:rotate(180deg) translateY(-132px) rotate(-180deg)">谢谢参与</div>
+<div class="slice-label light" style="transform:rotate(225deg) translateY(-132px) rotate(-225deg)">谢谢参与</div>
+<div class="slice-label" style="transform:rotate(270deg) translateY(-132px) rotate(-270deg)">谢谢参与</div>
+<div class="slice-label light" style="transform:rotate(315deg) translateY(-132px) rotate(-315deg)">谢谢参与</div>
+</div><div class="hub">圣诞<br>抽奖</div></div>
+<div class="wheel-caption">每个演示体验仅可抽取一次 · 固定演示结果</div>
+<div class="actions"><button class="btn" id="spin">🎄 立即抽奖</button></div>
+<div class="result hidden" id="prize"></div>
+<div class="actions hidden" id="nextWrap"><button class="btn" id="claim">领取我的礼物 →</button></div>
+<div class="notice">演示说明：此转盘会固定停在「神秘圣诞礼物」，并非真实随机抽奖，也不代表实际商品或中奖资格。</div>
+</section>
+
+<section class="panel hidden" id="claimPage">
+<div class="hero"><div class="ornament">🎁</div><div class="eyebrow">A GIFT FOR YOU</div><h1>神秘圣诞礼物！</h1><p>圣诞快乐！填写下方信息，体验礼物领取流程。</p></div>
+<form id="claimForm">
+<div class="field"><label>收货人姓名</label><input name="recipient" autocomplete="name" maxlength="60" placeholder="请输入收货人姓名" required></div>
+<div class="field"><label>联系电话</label><input name="phone" autocomplete="tel" inputmode="tel" maxlength="30" placeholder="请输入联系电话" required></div>
+<div class="field"><label>收货地址</label><textarea name="address" autocomplete="street-address" rows="3" maxlength="500" placeholder="请填写完整收货地址" required></textarea></div>
+<label class="small" style="display:flex;gap:8px;align-items:flex-start;line-height:1.6"><input type="checkbox" id="consent" required style="margin-top:3px">我已了解：正式活动中，这些信息仅用于核验领取资格、联系获奖者及寄送奖品，并由活动主办方通过安全后台处理；未经另行授权，不用于营销。演示站不会提交或保存这些信息。</label>
+<div class="notice">隐私提示：当前是纯前端演示，点击提交不会把姓名、电话或地址发送到服务器。正式上线前必须配置 HTTPS、安全后台、访问权限、保存期限及隐私政策。</div>
+<div class="actions"><button class="btn" type="submit">确认提交（演示）</button></div>
+</form></section>
+
+<section class="panel hidden success" id="done"><div class="gift">🎄🎁✨</div><div class="eyebrow">MERRY CHRISTMAS</div><h1>领取流程演示完成</h1><p>感谢体验！本次填写的信息没有被上传或保存。</p><button class="btn secondary" onclick="location.reload()">返回首页</button></section>
+</main><footer>Made with ✦ Christmas spirit · 演示活动页面</footer>
+<script>
+const snow=document.getElementById('snow');for(let i=0;i<28;i++){let f=document.createElement('span');f.className='flake';f.textContent='❄';f.style.left=Math.random()*100+'%';f.style.animationDuration=(8+Math.random()*12)+'s';f.style.animationDelay=(-Math.random()*18)+'s';f.style.fontSize=(8+Math.random()*12)+'px';snow.appendChild(f)}
+const pages=['survey','draw','claimPage','done'];function show(id){pages.forEach(p=>document.getElementById(p).classList.toggle('hidden',p!==id));window.scrollTo({top:0,behavior:'smooth'});document.getElementById('progress').style.width=({survey:'33%',draw:'66%',claimPage:'90%',done:'100%'})[id]}
+document.getElementById('surveyForm').addEventListener('submit',e=>{e.preventDefault();show('draw')});
+let spun=false;document.getElementById('spin').addEventListener('click',()=>{if(spun)return;spun=true;const b=document.getElementById('spin');b.disabled=true;b.textContent='✨ 圣诞好运降临…';const wheel=document.getElementById('wheel');wheel.style.transform='rotate(0deg)';requestAnimationFrame(()=>{wheel.style.transform='rotate(6turn)'});setTimeout(()=>{document.getElementById('prize').textContent='🎁 恭喜获得：神秘圣诞礼物';document.getElementById('prize').classList.remove('hidden');document.getElementById('nextWrap').classList.remove('hidden');b.textContent='已抽奖 · 仅此一次'},5400)});
+document.getElementById('claim').addEventListener('click',()=>show('claimPage'));
+document.getElementById('claimForm').addEventListener('submit',e=>{e.preventDefault();if(!document.getElementById('consent').checked)return;show('done')});
+</script></body></html>
