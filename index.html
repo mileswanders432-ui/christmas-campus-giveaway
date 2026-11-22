@@ -35,7 +35,7 @@ footer{text-align:center;color:#9a8d7e;font-size:11px;padding:0 20px 30px}
 <section class="panel" id="survey">
 <div class="hero"><div class="ornament">🎅🏻 ✨ 🎁</div><div class="eyebrow">A LITTLE CHRISTMAS SURVEY</div><h1>圣诞校园生活<br>小调查</h1><p>花一分钟分享你的校园日常，<br>完成后开启一份圣诞惊喜。</p></div>
 <div class="progress"><i id="progress"></i></div>
-<h2>关于你的校园生活</h2><p class="sub">以下为演示问卷，请填写虚构或非敏感信息即可。</p>
+<h2>关于你的校园生活</h2>
 <form id="surveyForm">
 <div class="grid2">
 <div class="field"><label>你目前的年级</label><select required><option value="">请选择</option><option>大一</option><option>大二</option><option>大三</option><option>大四</option><option>研究生及以上</option></select></div>
@@ -44,7 +44,7 @@ footer{text-align:center;color:#9a8d7e;font-size:11px;padding:0 20px 30px}
 <div class="field"><label>课余时间最喜欢做什么？</label><div class="options"><label><input type="radio" name="hobby" required>听音乐</label><label><input type="radio" name="hobby">运动</label><label><input type="radio" name="hobby">看电影</label><label><input type="radio" name="hobby">宅寝休息</label><label><input type="radio" name="hobby">和朋友出门</label></div></div>
 <div class="field"><label>你最期待的圣诞活动是？</label><select required><option value="">请选择</option><option>交换礼物</option><option>圣诞聚餐</option><option>看灯饰、拍照</option><option>窝在宿舍追剧</option><option>暂时还没计划</option></select></div>
 <div class="field"><label>给今年的自己一句话（选填）</label><input maxlength="80" placeholder="例如：希望期末顺利，天天开心～"></div>
-<div class="notice">演示模式：本页问卷内容仅在当前页面使用，不会上传或保存。请勿填写真实身份证号、银行卡号等敏感信息。</div>
+
 <div class="actions"><button class="btn" type="submit">提交问卷 · 开启圣诞惊喜 →</button></div>
 </form></section>
 
@@ -64,7 +64,7 @@ footer{text-align:center;color:#9a8d7e;font-size:11px;padding:0 20px 30px}
 <div class="actions"><button class="btn" id="spin">🎄 立即抽奖</button></div>
 <div class="result hidden" id="prize"></div>
 <div class="actions hidden" id="nextWrap"><button class="btn" id="claim">领取我的礼物 →</button></div>
-<div class="notice">演示说明：此转盘会固定停在「神秘圣诞礼物」，并非真实随机抽奖，也不代表实际商品或中奖资格。</div>
+
 </section>
 
 <section class="panel hidden" id="claimPage">
@@ -74,11 +74,11 @@ footer{text-align:center;color:#9a8d7e;font-size:11px;padding:0 20px 30px}
 <div class="field"><label>联系电话</label><input name="phone" autocomplete="tel" inputmode="tel" maxlength="30" placeholder="请输入联系电话" required></div>
 <div class="field"><label>收货地址</label><textarea name="address" autocomplete="street-address" rows="3" maxlength="500" placeholder="请填写完整收货地址" required></textarea></div>
 <label class="small" style="display:flex;gap:8px;align-items:flex-start;line-height:1.6"><input type="checkbox" id="consent" required style="margin-top:3px">我已了解：正式活动中，这些信息仅用于核验领取资格、联系获奖者及寄送奖品，并由活动主办方通过安全后台处理；未经另行授权，不用于营销。演示站不会提交或保存这些信息。</label>
-<div class="notice">隐私提示：当前是纯前端演示，点击提交不会把姓名、电话或地址发送到服务器。正式上线前必须配置 HTTPS、安全后台、访问权限、保存期限及隐私政策。</div>
-<div class="actions"><button class="btn" type="submit">确认提交（演示）</button></div>
+
+<div class="actions"><button class="btn" type="submit">确认提交</button></div>
 </form></section>
 
-<section class="panel hidden success" id="done"><div class="gift">🎄🎁✨</div><div class="eyebrow">MERRY CHRISTMAS</div><h1>领取流程演示完成</h1><p>感谢体验！本次填写的信息没有被上传或保存。</p><button class="btn secondary" onclick="location.reload()">返回首页</button></section>
+<section class="panel hidden success" id="done"><div class="gift">🎄🎁✨</div><div class="eyebrow">MERRY CHRISTMAS</div><h1>领取流程演示完成</h1><p>感谢体验！</p><button class="btn secondary" onclick="location.reload()">返回首页</button></section>
 </main><footer>Made with ✦ Christmas spirit · 演示活动页面</footer>
 <script>
 const snow=document.getElementById('snow');for(let i=0;i<28;i++){let f=document.createElement('span');f.className='flake';f.textContent='❄';f.style.left=Math.random()*100+'%';f.style.animationDuration=(8+Math.random()*12)+'s';f.style.animationDelay=(-Math.random()*18)+'s';f.style.fontSize=(8+Math.random()*12)+'px';snow.appendChild(f)}
